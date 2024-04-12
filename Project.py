@@ -157,35 +157,27 @@ expense_manager = ExpenseManager()
 expense_manager.add_category("Одяг", "Витрати, пов'язані з покупкою одягу")
 expense_manager.add_category("Подорожі", "Витрати, пов'язані з подорожами")
 
-# Створимо бюджет
 budget = expense_manager.create_budget("2024-04-01", "2024-04-30", 1000)
 if budget:
     print("Бюджет створено успішно.")
 else:
     print("Не вдалося створити бюджет.")
 
-# Додамо витрати
 expense_manager.add_expense(200, "2024-04-05", "Одяг", "Штани")
 expense_manager.add_expense(150, "2024-04-10", "Їжа", "Обід")
 expense_manager.add_expense(50, "2024-04-15", "Транспорт", "Таксі")
 
-# Перевіримо стан бюджету
 if budget.plan_budget():
     print("Бюджет сплановано успішно.")
 else:
     print("Бюджет не вистачає на всі плановані витрати.")
 
-# Додамо витрату до бюджету
 expense_manager.add_expense_to_budget(Expense(300, "2024-04-20", "Подорожі", "Квитки на поїзд"))
 
-# Згенеруємо звіт
 print(expense_manager.generate_report())
 
-# Додамо нову категорію
 expense_manager.add_new_category("Розваги", "Витрати на розваги та відпочинок")
 
-# Оновимо опис існуючої категорії
 expense_manager.update_category_description("Їжа", "Витрати на їжу та напої")
 
-# Згенеруємо звіт з оновленими даними
 print(expense_manager.generate_report())
